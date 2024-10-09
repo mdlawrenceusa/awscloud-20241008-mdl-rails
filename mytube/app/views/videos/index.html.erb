@@ -1,0 +1,26 @@
+<h1>My Favorite YouTube Videos</h1>
+
+<%= link_to 'Add New Video', new_video_path, class: 'btn btn-primary' %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Video</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @videos.each do |video| %>
+      <tr>
+        <td><%= video.title %></td>
+        <td>
+          <iframe width="560" height="315" src="<%= video.embed_link %>" frameborder="0" allowfullscreen></iframe>
+        </td>
+        <td><%= link_to 'Edit', edit_video_path(video), class: 'btn btn-warning' %></td>
+        <td><%= link_to 'Delete', video, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
